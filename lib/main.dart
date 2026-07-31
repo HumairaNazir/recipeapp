@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapp/screens/auth/login_screen.dart';
+import 'package:recipeapp/screens/auth/signup_screen.dart';
 import 'package:recipeapp/screens/home_screen.dart';
 import 'package:recipeapp/screens/onboarding/onboading_screen.dart';
 import 'package:recipeapp/services/preferences_services.dart';
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
 
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: isCompleted ? const HomeScreen() : const OnboadingScreen(),
+          home: isCompleted ? const SignupScreen() : const OnboadingScreen(),
         );
       },
     );

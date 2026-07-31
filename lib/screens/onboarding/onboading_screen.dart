@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipeapp/models/onboarding_items.dart';
+import 'package:recipeapp/screens/auth/login_screen.dart';
+import 'package:recipeapp/screens/auth/signup_screen.dart';
 import 'package:recipeapp/widgets/onboard_item_widget.dart';
 
 import '../../services/preferences_services.dart';
@@ -13,12 +15,6 @@ class OnboadingScreen extends StatefulWidget {
 }
 
 final List<Color> pageColors = [
-  // const Color(0xFFFFB74D), // Deep Orange
-  // const Color(0xFF81C784), // Fresh Green
-  // const Color(0xFFFFD54F), // Golden Yellow
-  // const Color(0xFFFFA726), // Orange
-  // const Color(0xFF66BB6A), // Green
-  // const Color(0xFFFFCA28), // Amber
   const Color(0xFFFFA726), // Appetizing Orange
   const Color(0xFF66BB6A), // Fresh Green
   const Color(0xFFFFD54F), // Warm Yellow
@@ -82,7 +78,7 @@ class _OnboardingScreenState extends State<OnboadingScreen>
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        MaterialPageRoute(builder: (_) => const SignupScreen()),
       );
     }
   }
