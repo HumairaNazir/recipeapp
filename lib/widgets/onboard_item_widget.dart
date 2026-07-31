@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapp/core/theme/app_text_styles.dart';
 
 import '../models/onboarding_items.dart';
 
@@ -49,9 +50,10 @@ class OnboardItemWidget extends StatelessWidget {
             item.title,
             key: ValueKey(item.title),
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            style: twentyEight700TextStyle(),
           ),
         ),
+        SizedBox(height: 10),
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 700),
           transitionBuilder: (child, animation) {
@@ -70,11 +72,7 @@ class OnboardItemWidget extends StatelessWidget {
             item.subTitle,
             key: ValueKey(item.subTitle),
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.black54,
-              height: 1.5,
-            ),
+            style: fourteen600TextStyle(color: Colors.black54),
           ),
         ),
       ],

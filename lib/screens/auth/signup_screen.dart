@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapp/utilities/app_routes.dart';
 
 import '../../core/theme/app_text_styles.dart';
 import '../../widgets/button_widget.dart';
@@ -15,6 +16,7 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
   bool _obscureText = true;
 
   static const Color _bgColor = Color(0xFFFFA726);
@@ -87,7 +89,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10),
                   CustomTextField(
-                    controller: _passwordController,
+                    controller: _confirmPasswordController,
                     hintText: "Confirm Password",
                     prefixIcon: Icons.lock,
                     obscureText: _obscureText,
@@ -104,7 +106,12 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
 
                   const SizedBox(height: 20),
-                  ButtonWidget(text: 'Sign Up'),
+                  ButtonWidget(
+                    text: 'Sign Up',
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, homeScreenRoute);
+                    },
+                  ),
 
                   const SizedBox(height: 20),
                   Row(
@@ -135,9 +142,17 @@ class _SignupScreenState extends State<SignupScreen> {
                         'Already have an account? ',
                         style: fourteen600TextStyle(color: Colors.grey),
                       ),
-                      Text(
-                        ' Login',
-                        style: fourteen600TextStyle(color: Colors.deepOrange),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            loginScreenRoute,
+                          );
+                        },
+                        child: Text(
+                          ' Login',
+                          style: fourteen600TextStyle(color: Colors.deepOrange),
+                        ),
                       ),
                     ],
                   ),

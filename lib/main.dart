@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:recipeapp/screens/auth/login_screen.dart';
 import 'package:recipeapp/screens/auth/signup_screen.dart';
-import 'package:recipeapp/screens/home_screen.dart';
-import 'package:recipeapp/screens/onboarding/onboading_screen.dart';
+import 'package:recipeapp/screens/auth/splash_screen.dart';
+import 'package:recipeapp/screens/home/home_screen.dart';
+import 'package:recipeapp/screens/onboarding/onboarding_screen.dart';
+
 import 'package:recipeapp/services/preferences_services.dart';
+import 'package:recipeapp/utilities/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await PreferencesServices.instance.init();
   runApp(const MyApp());
 }
@@ -17,21 +19,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<bool?>(
-      future: PreferencesServices.instance.getBool('isOnboardingCompleted'),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const MaterialApp(
-            home: Scaffold(body: Center(child: CircularProgressIndicator())),
-          );
-        }
-
-        final isCompleted = snapshot.data ?? false;
-
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: isCompleted ? const SignupScreen() : const OnboadingScreen(),
-        );
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: splashScreenRoute,
+      routes: {
+        splashScreenRoute: (context) => const SplashScreen(),
+        onboardingScreenRoute: (context) => const OnboardingScreen(),
+        loginScreenRoute: (context) => LoginScreen(),
+        signupScreenRoute: (context) => const SignupScreen(),
+        homeScreenRoute: (context) => const HomeScreen(),
       },
     );
   }

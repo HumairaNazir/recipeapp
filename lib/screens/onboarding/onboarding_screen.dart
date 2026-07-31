@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapp/core/theme/app_colors.dart';
 import 'package:recipeapp/models/onboarding_items.dart';
 import 'package:recipeapp/screens/auth/login_screen.dart';
 import 'package:recipeapp/screens/auth/signup_screen.dart';
 import 'package:recipeapp/widgets/onboard_item_widget.dart';
-
+import 'package:recipeapp/utilities/app_routes.dart';
 import '../../services/preferences_services.dart';
-import '../home_screen.dart';
 
-class OnboadingScreen extends StatefulWidget {
-  const OnboadingScreen({super.key});
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  State<OnboadingScreen> createState() => _OnboardingScreenState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
 final List<Color> pageColors = [
@@ -40,7 +40,7 @@ final List<OnboardingItems> _pages = [
   ),
 ];
 
-class _OnboardingScreenState extends State<OnboadingScreen>
+class _OnboardingScreenState extends State<OnboardingScreen>
     with SingleTickerProviderStateMixin {
   int _currentPage = 0;
   final PageController _pageController = PageController();
@@ -78,7 +78,7 @@ class _OnboardingScreenState extends State<OnboadingScreen>
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const SignupScreen()),
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
       );
     }
   }
@@ -129,7 +129,7 @@ class _OnboardingScreenState extends State<OnboadingScreen>
                     width: _currentPage == index ? 18 : 8,
                     decoration: BoxDecoration(
                       color: _currentPage == index
-                          ? Theme.of(context).colorScheme.primary
+                          ? Colors.deepOrange
                           : Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -143,6 +143,7 @@ class _OnboardingScreenState extends State<OnboadingScreen>
                   child: FilledButton(
                     onPressed: _next,
                     style: FilledButton.styleFrom(
+                      backgroundColor: AppColors.accent,
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       textStyle: const TextStyle(
                         fontWeight: FontWeight.bold,

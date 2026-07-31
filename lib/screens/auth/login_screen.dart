@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../utilities/app_routes.dart';
 import '../../widgets/button_widget.dart';
 import '../../widgets/outline_btn_widget.dart';
 import '../../widgets/text_field_widget.dart';
@@ -94,7 +95,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  ButtonWidget(text: 'Sign In'),
+                  ButtonWidget(
+                    text: 'Sign In',
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, homeScreenRoute);
+                    },
+                  ),
 
                   const SizedBox(height: 28),
                   Row(
@@ -131,9 +137,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         'Don\'t have an Account? ',
                         style: fourteen600TextStyle(color: Colors.grey),
                       ),
-                      Text(
-                        ' Sign Up',
-                        style: fourteen600TextStyle(color: Colors.deepOrange),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            signupScreenRoute,
+                          );
+                        },
+                        child: Text(
+                          ' Sign Up',
+                          style: fourteen600TextStyle(color: Colors.deepOrange),
+                        ),
                       ),
                     ],
                   ),

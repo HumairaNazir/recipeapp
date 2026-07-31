@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
 
-/// Centralized color palette for the app (Warm Orange theme).
-/// Import this anywhere you need consistent colors instead of
-/// hardcoding hex values in individual widgets.
 class AppColors {
   AppColors._(); // prevent instantiation
 
