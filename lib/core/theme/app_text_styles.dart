@@ -37,6 +37,15 @@ fourteen600TextStyle({color}) {
   );
 }
 
+twenty700TextStyle({color}) {
+  return TextStyle(
+    fontSize: 20,
+    color: color,
+    fontWeight: FontWeight.w700,
+    fontFamily: GoogleFonts.poppins(fontWeight: FontWeight.w700).fontFamily,
+  );
+}
+
 underlineTextStyle({color}) {
   return TextStyle(
     fontSize: 14,

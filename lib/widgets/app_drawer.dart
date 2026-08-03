@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../core/theme/app_text_styles.dart';
+import 'back_button_widget.dart';
+
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
 
@@ -15,12 +18,13 @@ class AppDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // BackButtonWidget(
-                //   onTap: () {
-                //     Navigator.pop(context);
-                //   },
-                //   imagePath: 'assets/cross.png',
-                // ),
+                BackButtonWidget(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icons.arrow_back,
+                  // imagePath: 'assets/cross.png',
+                ),
               ],
             ),
             Column(
@@ -31,7 +35,12 @@ class AppDrawer extends StatelessWidget {
                   width: 100,
                   height: 100,
                   decoration: const BoxDecoration(shape: BoxShape.circle),
-                  child: Image.asset('assets/images/login.png'),
+                  clipBehavior: Clip.antiAlias,
+                  child: Image.asset(
+                    'assets/images/login.png',
+                    fit: BoxFit.cover,
+                  ),
+
                   // ClipRRect(
                   //   borderRadius: BorderRadius.circular(100.0),
                   //   child: Padding(
@@ -50,14 +59,17 @@ class AppDrawer extends StatelessWidget {
                   //   ),
                   // ),
                 ),
-                // Text(
-                //   storage.user!.username,
-                //   style: twentyEight700TextStyle(),
-                // ),
-                // Text(
-                //   storage.user!.email,
-                //   style: twenty400TextStyle(color: lightGreyColor),
-                // ),
+                Text(
+                  'HumairaNazir',
+
+                  // storage.user!.username,
+                  style: twentyEight700TextStyle(),
+                ),
+                Text(
+                  'humairanazir77@gmail.com',
+                  // storage.user!.email,
+                  style: twentyEight700TextStyle(color: Colors.grey),
+                ),
                 const SizedBox(height: 50),
               ],
             ),
@@ -68,10 +80,7 @@ class AppDrawer extends StatelessWidget {
                 height: 20,
                 width: 20,
               ),
-              title: Text(
-                ' News Feed ',
-                // style: twenty700TextStyle(),
-              ),
+              title: Text(' News Feed ', style: twenty700TextStyle()),
               onTap: () {
                 Navigator.pop(context);
                 // Navigator.pushNamed(context, homeScreenRoute);
@@ -83,10 +92,7 @@ class AppDrawer extends StatelessWidget {
                 height: 20,
                 width: 20,
               ),
-              title: Text(
-                'Account Setting ',
-                // style: twenty700TextStyle(),
-              ),
+              title: Text('Account Setting ', style: twenty700TextStyle()),
               onTap: () {
                 Navigator.pop(context);
                 // Navigator.pushNamed(context, accountSettingScreenRoute);
@@ -98,10 +104,7 @@ class AppDrawer extends StatelessWidget {
                 height: 20,
                 width: 20,
               ),
-              title: Text(
-                ' Delete Account ',
-                // style: twenty700TextStyle(),
-              ),
+              title: Text(' Delete Account ', style: twenty700TextStyle()),
               onTap: () {
                 Navigator.pop(context);
                 // Navigator.pushNamed(context, deleteScreenRoute);
@@ -109,10 +112,7 @@ class AppDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.policy, size: 25, color: Colors.black),
-              title: Text(
-                'Privacy Policy ',
-                // style: twenty700TextStyle(),
-              ),
+              title: Text('Privacy Policy ', style: twenty700TextStyle()),
               onTap: () {
                 Navigator.pop(context);
                 // Navigator.pushNamed(context, privacyPolicyScreenRoute);
@@ -124,10 +124,7 @@ class AppDrawer extends StatelessWidget {
                 height: 20,
                 width: 20,
               ),
-              title: Text(
-                'Logout ',
-                // style: twenty700TextStyle(),
-              ),
+              title: Text('Logout ', style: twenty700TextStyle()),
               onTap: () {
                 Navigator.pop(context);
                 // userRepository.signOut(context);
