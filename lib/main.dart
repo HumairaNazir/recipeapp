@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipeapp/screens/auth/login_screen.dart';
 import 'package:recipeapp/screens/auth/signup_screen.dart';
 import 'package:recipeapp/screens/auth/splash_screen.dart';
-import 'package:recipeapp/screens/home/home_screen.dart';
+
+import 'package:recipeapp/screens/main/main_screen.dart';
 import 'package:recipeapp/screens/onboarding/onboarding_screen.dart';
 
 import 'package:recipeapp/services/preferences_services.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         onboardingScreenRoute: (context) => const OnboardingScreen(),
         loginScreenRoute: (context) => LoginScreen(),
         signupScreenRoute: (context) => const SignupScreen(),
-        homeScreenRoute: (context) => const HomeScreen(),
+        homeScreenRoute: (context) => const MainScreen(),
       },
     );
   }
