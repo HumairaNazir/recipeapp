@@ -8,6 +8,8 @@ class RecipeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final cardListHeight = size.height * 0.31;
     return Container(
       width: 200,
       margin: const EdgeInsets.only(right: 15),
