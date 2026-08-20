@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+
+import '../models/categories_model.dart';
+
+class CategoryCard extends StatelessWidget {
+  final Category category;
+
+  const CategoryCard({super.key, required this.category});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(20),
+      onTap: () {},
+      child: Container(
+        decoration: BoxDecoration(
+          color: category.color.withOpacity(0.12),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: category.color.withOpacity(0.2),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(category.icon, size: 32, color: category.color),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              category.name,
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

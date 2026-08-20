@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipeapp/screens/auth/login_screen.dart';
 import 'package:recipeapp/screens/auth/signup_screen.dart';
 import 'package:recipeapp/screens/auth/splash_screen.dart';
+import 'package:recipeapp/screens/categories/categories_screen.dart';
 import 'package:recipeapp/screens/categories/category_recipe_screen.dart';
 
 import 'package:recipeapp/screens/main/main_screen.dart';
@@ -32,15 +33,7 @@ class MyApp extends StatelessWidget {
         loginScreenRoute: (context) => LoginScreen(),
         signupScreenRoute: (context) => const SignupScreen(),
         homeScreenRoute: (context) => const MainScreen(),
-        categoryRecipesScreenRoute: (context) {
-          final args =
-              ModalRoute.of(context)!.settings.arguments
-                  as Map<String, dynamic>;
-          return CategoryRecipesScreen(
-            category: args['category'] as String,
-            recipes: args['recipes'] as List<Recipe>,
-          );
-        },
+        categoriesScreenRoute: (context) => CategoriesScreen(),
       },
     );
   }

@@ -3,4 +3,4 @@ const onboardingScreenRoute = "/OnboardingScreen";
 const signupScreenRoute = "/SignupScreen";
 const loginScreenRoute = "/LoginScreen";
 const homeScreenRoute = "/MainScreen";
-const categoryRecipesScreenRoute = "/CategoryRecipesScreen";
+const categoriesScreenRoute = "/CategoriesScreen";
