@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../core/theme/app_text_styles.dart';
+import '../../data/recipe_data.dart';
 import '../../models/recipe_model.dart';
 import '../../utilities/app_routes.dart';
 import '../../widgets/app_drawer.dart';
 import '../../widgets/recipe_card_widget.dart';
 import '../../widgets/recommended_list_widget.dart';
 import '../../widgets/text_field_widget.dart';
-import '../categories/category_recipe_screen.dart';
+
 import 'home-app_bar.dart';
-import '../../data/recipe_data.dart';
+import '../../data/category_data.dart' as category_data;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,29 +24,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String _selectedCategory = "All";
 
-  // Icons that pair each category with a bit of visual warmth.
-  final Map<String, IconData> categoryIcons = const {
-    "All": Icons.grid_view_rounded,
-    "Breakfast": Icons.free_breakfast_rounded,
-    "Lunch": Icons.lunch_dining_rounded,
-    "Dinner": Icons.dinner_dining_rounded,
-    "Salad": Icons.eco_rounded,
-    "Vegetarian": Icons.spa_rounded,
-    "Soup": Icons.soup_kitchen_rounded,
-    "Snack": Icons.cookie_rounded,
-    "Beverage": Icons.local_cafe_rounded,
-    "Dessert": Icons.icecream_rounded,
-  };
+  List<category_data.Category> get _homeCategories => [
+    category_data.Category(
+      name: "All",
+      icon: Icons.grid_view_rounded,
+      color: Colors.deepOrange,
+    ),
+    ...category_data.categories,
+  ];
 
-  // Full category list (used by the icon lookup and the bottom-nav
-  // categories screen). On the home screen we only preview a handful.
-  List<String> get categories => categoryIcons.keys.toList();
-
-  // Short preview shown inline — tweak this number to taste.
   static const int _categoryPreviewCount = 6;
 
-  List<String> get _previewCategories =>
-      categories.take(_categoryPreviewCount).toList();
+  List<category_data.Category> get _previewCategories =>
+      _homeCategories.take(_categoryPreviewCount).toList();
 
   List<Recipe> get _filteredRecipes {
     if (_selectedCategory == "All") return allRecipes;
@@ -210,10 +201,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: _previewCategories.length,
                   itemBuilder: (context, index) {
                     final category = _previewCategories[index];
-                    final isSelected = category == _selectedCategory;
+                    final isSelected = category.name == _selectedCategory;
                     return GestureDetector(
                       onTap: () {
-                        setState(() => _selectedCategory = category);
+                        setState(() => _selectedCategory = category.name);
                       },
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 220),
@@ -242,14 +233,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Icon(
-                              categoryIcons[category] ??
-                                  Icons.restaurant_rounded,
+                              category.icon,
                               size: 16,
                               color: isSelected ? Colors.white : Colors.black54,
                             ),
                             const SizedBox(width: 6),
                             Text(
-                              category,
+                              category.name,
                               style: TextStyle(
                                 color: isSelected
                                     ? Colors.white
@@ -269,12 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 26),
 
-              _SectionHeader(
-                title: "Recent Recipes",
-                onSeeAll: () {
-                  Navigator.pushNamed(context, categoriesScreenRoute);
-                },
-              ),
+              _SectionHeader(title: "Recent Recipes", onSeeAll: () {}),
               const SizedBox(height: 12),
               SizedBox(
                 height: cardListHeight,

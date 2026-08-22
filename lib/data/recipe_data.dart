@@ -2,6 +2,7 @@ import '../models/recipe_model.dart';
 
 final List<Recipe> allRecipes = [
   Recipe(
+    id: "1",
     title: "Avocado Toast",
     image: "assets/images/login.png",
     duration: "10 min",
@@ -25,6 +26,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "2",
     title: "Pancakes with Maple Syrup",
     image: "assets/images/login.png",
     duration: "20 min",
@@ -51,6 +53,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "3",
     title: "Greek Salad",
     image: "assets/images/login.png",
     duration: "15 min",
@@ -76,6 +79,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "4",
     title: "Vegetable Stir Fry",
     image: "assets/images/login.png",
     duration: "25 min",
@@ -102,6 +106,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "5",
     title: "Grilled Salmon",
     image: "assets/images/login.png",
     duration: "35 min",
@@ -127,6 +132,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "6",
     title: "Beef Tacos",
     image: "assets/images/login.png",
     duration: "30 min",
@@ -153,6 +159,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "7",
     title: "Mushroom Risotto",
     image: "assets/images/login.png",
     duration: "40 min",
@@ -179,6 +186,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "8",
     title: "Chickpea Curry",
     image: "assets/images/login.png",
     duration: "35 min",
@@ -205,6 +213,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "10",
     title: "Tomato Basil Soup",
     image: "assets/images/login.png",
     duration: "25 min",
@@ -231,6 +240,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "11",
     title: "Chicken Caesar Wrap",
     image: "assets/images/login.png",
     duration: "15 min",
@@ -254,6 +264,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "12",
     title: "Banana Smoothie",
     image: "assets/images/login.png",
     duration: "5 min",
@@ -275,6 +286,7 @@ final List<Recipe> allRecipes = [
     ],
   ),
   Recipe(
+    id: "13",
     title: "Tiramisu",
     image: "assets/images/login.png",
     duration: "50 min",

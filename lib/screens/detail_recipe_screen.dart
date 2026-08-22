@@ -1,6 +1,6 @@
-// lib/screens/recipe/recipe_detail_screen.dart
 import 'package:flutter/material.dart';
 import '../../models/recipe_model.dart';
+import '../services/favorites_services.dart';
 
 class RecipeDetailScreen extends StatelessWidget {
   const RecipeDetailScreen({super.key});
@@ -27,10 +27,19 @@ class RecipeDetailScreen extends StatelessWidget {
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 16),
-                child: _CircleIconButton(
-                  icon: Icons.favorite_border,
-                  onTap: () {
-                    // hook up favorites later
+                child: ListenableBuilder(
+                  listenable: FavoritesService.instance,
+                  builder: (context, _) {
+                    final isFav = FavoritesService.instance.isFavorite(
+                      recipe.id,
+                    );
+                    return _CircleIconButton(
+                      icon: isFav ? Icons.favorite : Icons.favorite_border,
+                      iconColor: isFav ? Colors.red : Colors.black87,
+                      onTap: () {
+                        FavoritesService.instance.toggleFavorite(recipe.id);
+                      },
+                    );
                   },
                 ),
               ),
@@ -54,7 +63,6 @@ class RecipeDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
 
-                  // Quick stats row
                   Row(
                     children: [
                       _InfoChip(icon: Icons.schedule, label: recipe.duration),
@@ -207,8 +215,13 @@ class _InfoChip extends StatelessWidget {
 class _CircleIconButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
+  final Color iconColor;
 
-  const _CircleIconButton({required this.icon, required this.onTap});
+  const _CircleIconButton({
+    required this.icon,
+    required this.onTap,
+    this.iconColor = Colors.black87,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +238,7 @@ class _CircleIconButton extends StatelessWidget {
             BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 8),
           ],
         ),
-        child: Icon(icon, size: 18, color: Colors.black87),
+        child: Icon(icon, size: 18, color: iconColor),
       ),
     );
   }

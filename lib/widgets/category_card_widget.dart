@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipeapp/utilities/app_routes.dart';
 
-import '../models/categories_model.dart';
+import '../data/category_data.dart';
 
 class CategoryCard extends StatelessWidget {
   final Category category;

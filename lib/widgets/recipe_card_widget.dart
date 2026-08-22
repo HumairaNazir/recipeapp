@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipeapp/utilities/app_routes.dart';
 import '../models/recipe_model.dart';
 
+import '../services/favorites_services.dart';
+
 class RecipeCard extends StatelessWidget {
   final Recipe recipe;
 
@@ -39,13 +41,50 @@ class RecipeCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    recipe.image,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        recipe.image,
+                        width: double.infinity,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+
+                    Positioned(
+                      top: 8,
+                      right: 8,
+                      child: ListenableBuilder(
+                        listenable: FavoritesService.instance,
+                        builder: (context, _) {
+                          final isFav = FavoritesService.instance.isFavorite(
+                            recipe.id,
+                          );
+                          return GestureDetector(
+                            onTap: () {
+                              FavoritesService.instance.toggleFavorite(
+                                recipe.id,
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(6),
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                isFav ? Icons.favorite : Icons.favorite_border,
+                                size: 20,
+                                color: isFav ? Colors.red : Colors.grey,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 6),

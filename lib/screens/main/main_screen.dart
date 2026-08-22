@@ -20,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     CategoriesScreen(),
     SearchScreen(),
-    FavouriteScreen(),
+    FavoritesScreen(),
     ProfileScreen(),
   ];
 
