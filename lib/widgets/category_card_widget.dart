@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipeapp/utilities/app_routes.dart';
 
 import '../models/categories_model.dart';
 
@@ -11,7 +12,13 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(20),
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          categoryRecipeScreenRoute,
+          arguments: category.name,
+        );
+      },
       child: Container(
         decoration: BoxDecoration(
           color: category.color.withOpacity(0.12),

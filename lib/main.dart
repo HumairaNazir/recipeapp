@@ -4,6 +4,7 @@ import 'package:recipeapp/screens/auth/signup_screen.dart';
 import 'package:recipeapp/screens/auth/splash_screen.dart';
 import 'package:recipeapp/screens/categories/categories_screen.dart';
 import 'package:recipeapp/screens/categories/category_recipe_screen.dart';
+import 'package:recipeapp/screens/detail_recipe_screen.dart';
 
 import 'package:recipeapp/screens/main/main_screen.dart';
 import 'package:recipeapp/screens/onboarding/onboarding_screen.dart';
@@ -34,6 +35,8 @@ class MyApp extends StatelessWidget {
         signupScreenRoute: (context) => const SignupScreen(),
         homeScreenRoute: (context) => const MainScreen(),
         categoriesScreenRoute: (context) => CategoriesScreen(),
+        categoryRecipeScreenRoute: (context) => CategoryRecipesScreen(),
+        detailRecipeScreenRoute: (context) => RecipeDetailScreen(),
       },
     );
   }

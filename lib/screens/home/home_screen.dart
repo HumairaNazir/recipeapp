@@ -9,6 +9,7 @@ import '../../widgets/recommended_list_widget.dart';
 import '../../widgets/text_field_widget.dart';
 import '../categories/category_recipe_screen.dart';
 import 'home-app_bar.dart';
+import '../../data/recipe_data.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,81 +20,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
-
-  final List<Recipe> recipes = [
-    Recipe(
-      title: "Avocado Toast",
-      image: "assets/images/login.png",
-      duration: "10 min",
-      category: "Breakfast",
-    ),
-    Recipe(
-      title: "Pancakes with Maple Syrup",
-      image: "assets/images/login.png",
-      duration: "20 min",
-      category: "Breakfast",
-    ),
-    Recipe(
-      title: "Greek Salad",
-      image: "assets/images/login.png",
-      duration: "15 min",
-      category: "Salad",
-    ),
-    Recipe(
-      title: "Vegetable Stir Fry",
-      image: "assets/images/login.png",
-      duration: "25 min",
-      category: "Lunch",
-    ),
-    Recipe(
-      title: "Grilled Salmon",
-      image: "assets/images/login.png",
-      duration: "35 min",
-      category: "Dinner",
-    ),
-    Recipe(
-      title: "Beef Tacos",
-      image: "assets/images/login.png",
-      duration: "30 min",
-      category: "Dinner",
-    ),
-    Recipe(
-      title: "Mushroom Risotto",
-      image: "assets/images/login.png",
-      duration: "40 min",
-      category: "Dinner",
-    ),
-    Recipe(
-      title: "Chickpea Curry",
-      image: "assets/images/login.png",
-      duration: "35 min",
-      category: "Vegetarian",
-    ),
-    Recipe(
-      title: "Tomato Basil Soup",
-      image: "assets/images/login.png",
-      duration: "25 min",
-      category: "Soup",
-    ),
-    Recipe(
-      title: "Chicken Caesar Wrap",
-      image: "assets/images/login.png",
-      duration: "15 min",
-      category: "Snack",
-    ),
-    Recipe(
-      title: "Banana Smoothie",
-      image: "assets/images/login.png",
-      duration: "5 min",
-      category: "Beverage",
-    ),
-    Recipe(
-      title: "Tiramisu",
-      image: "assets/images/login.png",
-      duration: "50 min",
-      category: "Dessert",
-    ),
-  ];
 
   String _selectedCategory = "All";
 
@@ -122,8 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
       categories.take(_categoryPreviewCount).toList();
 
   List<Recipe> get _filteredRecipes {
-    if (_selectedCategory == "All") return recipes;
-    return recipes.where((r) => r.category == _selectedCategory).toList();
+    if (_selectedCategory == "All") return allRecipes;
+    return allRecipes.where((r) => r.category == _selectedCategory).toList();
   }
 
   @override
@@ -136,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final cardListHeight = size.height * 0.31;
-    final featured = recipes.isNotEmpty ? recipes.first : null;
+    final featured = allRecipes.isNotEmpty ? allRecipes.first : null;
 
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
